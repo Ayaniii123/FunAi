@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FUNAI — Create. Play. Discover.</title>
+<meta name="description" content="FunAI is a premium collection of AI tools, quizzes and games.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#07080d">
+<meta property="og:title" content="FUNAI — AI Tools, Quizzes & Games">
+<meta property="og:description" content="Create, explore and play with FunAI's AI tools, quizzes and mini games.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080d;--surface:#10121a;--surface2:#171a24;--text:#f5f5f7;--muted:#969cac;--line:#252936;--purple:#9d8cff;--cyan:#62e0ce}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope, sans-serif;overflow-x:hidden}button,a{font:inherit}.noise{position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}.cursor-glow{position:fixed;width:350px;height:350px;border-radius:50%;background:#8d7cff18;filter:blur(80px);pointer-events:none;z-index:-1}.nav{height:78px;padding:0 6vw;display:flex;align-items:center;justify-content:space-between;position:fixed;top:0;left:0;right:0;z-index:15;background:#07080dcc;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff0d}.logo{font:700 24px "Space Grotesk";letter-spacing:.18em}.logo span{color:var(--purple)}.nav nav{display:flex;gap:34px}.nav nav a{font-size:13px;color:var(--muted);transition:.2s}.nav nav a:hover{color:#fff}.nav-cta{font-size:12px;font-weight:700;padding:11px 16px;border:1px solid var(--line);border-radius:12px;transition:.25s}.nav-cta:hover{background:#fff;color:#08090e;transform:translateY(-2px)}
+.hero{min-height:850px;padding:150px 8vw 80px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;position:relative;overflow:hidden}.hero-bg{position:absolute;inset:0;background:linear-gradient(90deg,#07080df2 0%,#07080dca 48%,#07080d55 100%),url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=2200&q=90") center/cover;filter:saturate(.8)}.hero-orb{position:absolute;border-radius:50%;filter:blur(5px);animation:float 7s ease-in-out infinite}.orb1{width:260px;height:260px;background:#9d8cff35;right:24%;top:13%}.orb2{width:170px;height:170px;background:#62e0ce28;right:5%;bottom:12%;animation-delay:-3s}.hero-content,.hero-card,.scroll{position:relative;z-index:2}.pill,.label{font-size:10px;letter-spacing:.22em;font-weight:800;color:#b4b8c3}.pill{display:inline-flex;gap:10px;align-items:center}.pill i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan);animation:pulse 1.8s infinite}.hero h1{font:600 clamp(50px,7vw,92px)/.96 "Space Grotesk";max-width:850px;margin:22px 0}.hero h1 em{font-style:normal;color:var(--purple)}.hero p{max-width:610px;color:var(--muted);font-size:17px;line-height:1.8}.actions{display:flex;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;gap:25px;padding:14px 18px;border-radius:13px;font-size:13px;font-weight:800;transition:.25s}.btn b{font-size:18px}.btn-main{background:#fff;color:#090a0f}.btn-main:hover{transform:translateY(-4px);box-shadow:0 15px 40px #fff2}.btn-line{border:1px solid #ffffff26;background:#ffffff08}.btn-line:hover{border-color:#fff;transform:translateY(-4px)}.trust{display:flex;gap:25px;margin-top:35px;color:#6f7583;font-size:9px;letter-spacing:.18em}.hero-card{height:490px;margin-left:40px;position:relative}.hero-photo{position:absolute;inset:25px 0 0 35px;border-radius:28px;background:linear-gradient(180deg,#0000,#0008),url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1000&q=90") center/cover;box-shadow:0 35px 100px #000b;transform:rotate(2deg);animation:cardFloat 6s ease-in-out infinite}.hero-glass{position:absolute;bottom:0;left:0;width:270px;padding:22px;border:1px solid #ffffff24;border-radius:18px;background:#11131bd9;backdrop-filter:blur(16px);box-shadow:0 20px 50px #0009}.hero-glass small{font-size:9px;letter-spacing:.2em;color:var(--muted)}.hero-glass strong{display:block;font:600 22px/1.15 "Space Grotesk";margin:10px 0}.mini-line{display:flex;gap:5px}.mini-line span{height:3px;border-radius:5px;background:#ffffff30;flex:1}.mini-line span:first-child{background:var(--purple)}.floating-tag{position:absolute;z-index:3;padding:10px 13px;border:1px solid #ffffff20;border-radius:12px;background:#11131bd9;backdrop-filter:blur(12px);font-size:9px;letter-spacing:.12em;font-weight:800;box-shadow:0 12px 35px #0008}.tag1{top:8%;right:0;animation:float 5s infinite}.tag2{right:-3%;bottom:18%;animation:float 5s -.8s infinite}.scroll{position:absolute;bottom:28px;left:8vw;color:#676d7a;font-size:9px;letter-spacing:.2em}.scroll span{color:#fff;margin-left:10px}
+.section{padding:120px 8vw;max-width:1500px;margin:auto}.heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}.heading h2{font:600 clamp(36px,5vw,68px)/1.02 "Space Grotesk";margin:12px 0 0}.heading h2 span{color:#707687}.heading>p{max-width:330px;color:var(--muted);line-height:1.7;font-size:14px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{position:relative;min-height:270px;padding:27px;text-align:left;color:var(--text);background:linear-gradient(145deg,#151822,#0e1017);border:1px solid var(--line);border-radius:22px;cursor:pointer;overflow:hidden;transition:.35s}.card:before{content:"";position:absolute;width:150px;height:150px;right:-70px;top:-70px;background:var(--purple);filter:blur(70px);opacity:0;transition:.35s}.card:hover{transform:translateY(-8px);border-color:#5b5477;box-shadow:0 25px 60px #0008}.card:hover:before{opacity:.3}.num{font-size:9px;letter-spacing:.18em;color:#6f7584}.icon{margin-top:28px;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;border:1px solid #ffffff18;background:#ffffff08;color:var(--purple);font:600 18px "Space Grotesk"}.card h3{font:600 23px "Space Grotesk";margin:18px 0 8px}.card p{color:var(--muted);font-size:13px;line-height:1.6;max-width:260px}.arrow{position:absolute;right:25px;bottom:24px;color:#777d8b;font-size:18px;transition:.25s}.card:hover .arrow{color:#fff;transform:translate(3px,-3px)}
+.photo-break{min-height:580px;position:relative;display:flex;align-items:end;padding:90px 8vw;overflow:hidden;background:url("https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=2200&q=90") center/cover}.photo-overlay{position:absolute;inset:0;background:linear-gradient(0deg,#07080df7 0%,#07080d55 65%,#07080d22)}.photo-content{position:relative;z-index:2}.photo-content h2{font:600 clamp(42px,6vw,78px)/1 "Space Grotesk";margin:15px 0 30px}.photo-content h2 span{color:#b9b2ff}.round-btn{display:inline-flex;gap:25px;align-items:center;padding:13px 17px;border:1px solid #ffffff30;border-radius:12px;background:#ffffff0d;backdrop-filter:blur(12px);font-size:12px;font-weight:800}.round-btn:hover{background:#fff;color:#08090e}
+.feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature{padding:0;text-align:left;border:1px solid var(--line);border-radius:22px;background:var(--surface);color:#fff;overflow:hidden;cursor:pointer;transition:.3s}.feature:hover{transform:translateY(-7px);box-shadow:0 25px 60px #0008}.feature-art{height:220px;background-size:cover;background-position:center}.art-purple{background-image:linear-gradient(#0002,#0005),url("https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=85")}.art-blue{background-image:linear-gradient(#0002,#0005),url("https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=85")}.art-orange{background-image:linear-gradient(#0002,#0005),url("https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=900&q=85")}.feature-copy{padding:22px}.feature-copy small{font-size:9px;letter-spacing:.2em;color:var(--purple);font-weight:800}.feature-copy h3{font:600 21px "Space Grotesk";margin:11px 0 6px}.feature-copy p{color:var(--muted);font-size:12px}.feature-copy b{display:block;margin-top:20px;font-size:11px}
+.games-section{min-height:680px;padding:120px 8vw;position:relative;overflow:hidden}.game-bg{position:absolute;inset:0;background:linear-gradient(90deg,#07080df5,#07080db0,#07080d80),url("https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=2200&q=90") center/cover;filter:saturate(.75)}.game-content{position:relative;max-width:1200px;margin:auto}.games-section h2{font:600 clamp(48px,6vw,78px) "Space Grotesk";margin:15px 0}.games-section> .game-content>p{color:var(--muted)}.game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:55px}.game{min-height:180px;padding:23px;text-align:left;color:#fff;border:1px solid #ffffff1c;background:#0d0f16b8;backdrop-filter:blur(15px);border-radius:20px;cursor:pointer;transition:.3s}.game:hover{transform:translateY(-8px);background:#ffffff12;border-color:#ffffff45}.game small{display:block;color:var(--cyan);font-size:9px;letter-spacing:.2em}.game strong{display:block;font:600 23px "Space Grotesk";margin:30px 0 10px}.game span{font-size:11px;color:#9298a5}
+.contact{text-align:center}.contact-box{padding:85px 25px;border:1px solid var(--line);border-radius:30px;background:radial-gradient(circle at 50% 0,#28234b,#10121a 55%)}.contact h2{font:600 clamp(42px,6vw,72px) "Space Grotesk";margin:15px 0}.contact p{color:var(--muted);margin-bottom:30px}.email{display:inline-flex;gap:20px;align-items:center;padding:15px 18px;border-radius:12px;background:#fff;color:#090a0f;font-size:12px;font-weight:800}.email:hover span{transform:translate(3px,-3px)}footer{border-top:1px solid var(--line);padding:28px 8vw;display:flex;justify-content:space-between;color:#686e7b;font-size:10px;letter-spacing:.16em}footer strong{color:#fff}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}.delay{transition-delay:.15s}
+.modal{display:none;position:fixed;inset:0;z-index:50;background:#000b;backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{position:relative;width:min(650px,100%);padding:35px;background:#11131b;border:1px solid #ffffff18;border-radius:24px;box-shadow:0 30px 100px #000}.close{position:absolute;right:17px;top:10px;background:none;border:0;color:#89909f;font-size:32px;cursor:pointer}.modal h2{font:600 34px "Space Grotesk";margin:10px 0}.modal p{color:var(--muted);line-height:1.6}.modal input{width:100%;padding:14px;background:#080a0f;border:1px solid var(--line);border-radius:11px;color:#fff;margin:12px 0;outline:none}.modal-action{padding:13px 18px;border:0;border-radius:11px;background:#fff;color:#080a0f;font-weight:800;cursor:pointer}.result{white-space:pre-line;line-height:1.8;margin-top:18px;padding:18px;background:#080a0f;border:1px solid var(--line);border-radius:13px;line-height:1.7;white-space:pre-wrap}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}@keyframes cardFloat{0%,100%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(2deg) translateY(-10px)}}@keyframes pulse{50%{opacity:.35;transform:scale(.7)}}
+
+
+
+.card,.feature,.game,.theme-options button,.motion-row button,.theme-actions button{
+  position:relative;
+}
+.card:after,.feature:after,.game:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  box-shadow:inset 0 0 0 1px #ffffff05;
+}
+
+/* BUTTON HIGHLIGHT SYSTEM */
+:root{
+  --button-main:#9d8cff;
+  --button-secondary:#62e0ce;
+  --button-text:#08090e;
+}
+.btn-main{
+  background:linear-gradient(135deg,var(--button-main),#c2b9ff);
+  color:var(--button-text);
+  border:1px solid #ffffff45;
+  box-shadow:0 8px 30px color-mix(in srgb,var(--button-main) 28%,transparent);
+}
+.btn-main:hover{
+  filter:brightness(1.12);
+  box-shadow:0 12px 40px color-mix(in srgb,var(--button-main) 42%,transparent);
+}
+.btn-line{
+  color:#fff;
+  border:1px solid var(--button-secondary);
+  background:color-mix(in srgb,var(--button-secondary) 12%,#07080d);
+  box-shadow:0 0 20px color-mix(in srgb,var(--button-secondary) 10%,transparent);
+}
+.nav-cta{
+  color:#08090e;
+  background:linear-gradient(135deg,var(--button-secondary),#a7f3e8);
+  border:0;
+  box-shadow:0 7px 25px color-mix(in srgb,var(--button-secondary) 22%,transparent);
+}
+.nav-cta:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.round-btn{
+  color:#08090e;
+  background:linear-gradient(135deg,var(--button-secondary),#a7f3e8);
+  border:0;
+  box-shadow:0 8px 28px color-mix(in srgb,var(--button-secondary) 25%,transparent);
+}
+.round-btn:hover{color:#08090e;filter:brightness(1.1)}
+.game{
+  border-color:#ffffff28;
+  background:linear-gradient(145deg,#151827cc,#0c1018dd);
+}
+.game:hover{
+  border-color:var(--button-secondary);
+  box-shadow:0 18px 45px color-mix(in srgb,var(--button-secondary) 14%,transparent);
+}
+.game span{color:var(--button-secondary)}
+.feature-copy b{color:var(--button-secondary)}
+.modal-action{
+  background:linear-gradient(135deg,var(--button-main),#c2b9ff);
+  color:#08090e;
+  border:0;
+  box-shadow:0 8px 25px color-mix(in srgb,var(--button-main) 25%,transparent);
+}
+.modal-action:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.theme-options button:hover,.motion-row button:hover,.motion-row button.active{
+  background:color-mix(in srgb,var(--button-main) 18%,#10121a);
+  border-color:var(--button-main);
+}
+.theme-actions button{
+  background:linear-gradient(135deg,var(--button-main),#c2b9ff);
+}
+.email{
+  background:linear-gradient(135deg,var(--button-secondary),#a7f3e8);
+  color:#08090e;
+  box-shadow:0 10px 35px color-mix(in srgb,var(--button-secondary) 25%,transparent);
+}
+.email:hover{filter:brightness(1.1);transform:translateY(-3px)}
+.close,.theme-close{transition:.2s}
+.close:hover,.theme-close:hover{color:var(--button-main);transform:scale(1.08)}
+
+
+/* NEW CARD / BOX DESIGN */
+.card,.feature,.game{
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:28px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.018)),
+    rgba(11,13,20,.82);
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.07);
+  overflow:hidden;
+}
+.card{
+  min-height:290px;
+  padding:30px;
+  transform-style:preserve-3d;
+}
+.card:before{
+  width:220px;
+  height:220px;
+  right:-100px;
+  top:-100px;
+  background:var(--button-main);
+  filter:blur(85px);
+  opacity:.07;
+}
+.card:hover{
+  transform:translateY(-10px) rotateX(1deg);
+  border-color:color-mix(in srgb,var(--button-main) 65%,white 10%);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.45),
+    0 0 35px color-mix(in srgb,var(--button-main) 12%,transparent),
+    inset 0 1px 0 rgba(255,255,255,.12);
+}
+.card .icon{
+  width:58px;height:58px;
+  border-radius:18px;
+  background:linear-gradient(145deg,
+    color-mix(in srgb,var(--button-main) 22%,transparent),
+    rgba(255,255,255,.035));
+  border:1px solid color-mix(in srgb,var(--button-main) 45%,transparent);
+  box-shadow:0 10px 30px color-mix(in srgb,var(--button-main) 12%,transparent);
+}
+.card h3{font-size:24px}
+.card p{max-width:290px}
+.card .arrow{
+  width:40px;height:40px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+}
+.card:hover .arrow{
+  background:var(--button-main);
+  color:#08090e;
+  transform:translate(3px,-3px) scale(1.05);
+}
+.feature{
+  border-radius:28px;
+  background:#0d1018;
+}
+.feature-art{
+  height:245px;
+  position:relative;
+}
+.feature-art:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(5,6,10,.82));
+}
+.feature-copy{
+  padding:26px;
+  position:relative;
+}
+.feature-copy:before{
+  content:"";
+  position:absolute;
+  width:45px;height:3px;
+  left:26px;top:0;
+  background:var(--button-main);
+  box-shadow:0 0 18px color-mix(in srgb,var(--button-main) 70%,transparent);
+}
+.feature-copy b{
+  display:inline-flex;
+  align-items:center;
+  padding:9px 13px;
+  margin-top:18px;
+  border-radius:10px;
+  background:color-mix(in srgb,var(--button-main) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--button-main) 28%,transparent);
+}
+.game{
+  min-height:210px;
+  padding:28px;
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 100% 0,
+      color-mix(in srgb,var(--button-secondary) 14%,transparent),
+      transparent 35%),
+    linear-gradient(145deg,#151925dd,#090c13ee);
+}
+.game:hover{
+  transform:translateY(-9px) scale(1.015);
+  border-color:color-mix(in srgb,var(--button-secondary) 70%,white 5%);
+}
+.game strong{
+  font-size:25px;
+  letter-spacing:-.02em;
+}
+.game span{
+  display:inline-block;
+  margin-top:12px;
+  padding:8px 11px;
+  border-radius:9px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+}
+.contact-box{
+  border-radius:36px;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 30px 90px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+
+/* AD CONTAINERS — ready for AdSense after publisher approval */
+.ad-slot{
+  width:min(100%,970px);
+  min-height:90px;
+  margin:18px auto 0;
+  padding:12px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.ad-slot span{
+  font-size:9px;
+  letter-spacing:.18em;
+  color:#555c69;
+  text-transform:uppercase;
+}
+.ad-slot:before{
+  content:"";
+  position:absolute;
+  width:240px;height:80px;
+  background:var(--button-main);
+  filter:blur(75px);
+  opacity:.035;
+}
+.ad-note{font-size:9px;color:#555c69;text-align:center;margin:6px 0 0}
+@media(max-width:850px){.ad-slot{min-height:72px;margin-top:14px}}
+
+.contact-mini{display:grid;gap:10px;margin-top:22px;max-width:650px}
+.contact-mini input,.contact-mini textarea{
+  width:100%;padding:14px 16px;border-radius:13px;border:1px solid rgba(255,255,255,.1);
+  background:#080a10;color:#fff;outline:none;resize:vertical;
+}
+.contact-mini input:focus,.contact-mini textarea:focus{border-color:var(--button-main);box-shadow:0 0 0 3px color-mix(in srgb,var(--button-main) 12%,transparent)}
+.contact-mini .modal-action{width:max-content;padding:13px 20px}
+
+/* USER THEME CUSTOMIZER */
+.theme-panel{position:fixed;z-index:70;top:0;right:0;width:min(390px,92vw);height:100vh;padding:28px;background:#0d0f16f5;border-left:1px solid #ffffff18;backdrop-filter:blur(24px);box-shadow:-25px 0 80px #0009;transform:translateX(105%);transition:transform .35s ease;overflow:auto}
+.theme-panel.open{transform:translateX(0)}
+.theme-backdrop{position:fixed;inset:0;z-index:65;background:#0009;opacity:0;pointer-events:none;transition:.3s}
+.theme-backdrop.open{opacity:1;pointer-events:auto}
+.theme-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:35px}
+.theme-head h3{font:600 30px "Space Grotesk";margin:10px 0 0}
+.theme-close{background:none;border:0;color:#a0a6b3;font-size:34px;cursor:pointer;line-height:1}
+.theme-group{padding:22px 0;border-top:1px solid #ffffff10}
+.theme-group>label{display:block;color:#fff;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:13px}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.swatch{width:42px;height:42px;border-radius:50%;border:2px solid #ffffff25;background:var(--sw);cursor:pointer;transition:.2s;box-shadow:0 0 0 0 var(--sw)}
+.swatch:hover,.swatch.selected{transform:scale(1.1);box-shadow:0 0 0 3px #fff4}
+.theme-options,.motion-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.theme-options button,.motion-row button,.theme-actions button{padding:12px;border:1px solid #ffffff14;background:#ffffff07;color:#c9cdd6;border-radius:11px;cursor:pointer;font-size:11px;transition:.2s}
+.theme-options button:hover,.motion-row button:hover,.motion-row button.active{border-color:var(--accent);color:#fff;background:#ffffff10}
+.theme-actions{display:flex;align-items:center;gap:12px;padding-top:20px}
+.theme-actions button{background:#fff;color:#08090d;font-weight:800}
+.theme-actions span{font-size:10px;color:#747b89}
+.no-motion *,.no-motion *::before,.no-motion *::after{animation:none!important;transition:none!important}
+
+@media(max-width:850px){.nav{padding:0 20px}.nav nav{display:none}.nav-cta{padding:9px 11px}.hero{display:block;padding:135px 22px 80px;min-height:900px}.hero h1{font-size:54px}.hero p{font-size:15px}.hero-card{height:350px;margin:60px 0 0}.hero-photo{inset:0 0 0 18px}.hero-glass{width:240px}.scroll{left:22px}.section{padding:80px 22px}.heading{display:block}.heading>p{margin-top:25px}.cards,.feature-row,.game-grid{grid-template-columns:1fr}.photo-break{min-height:500px;padding:65px 22px}.feature-art{height:190px}.games-section{padding:80px 22px;min-height:760px}footer{padding:25px 22px;flex-direction:column;gap:12px}.trust{gap:13px}}
+
+.legal{padding-top:55px;padding-bottom:55px}.legal-box{padding:42px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,#151822,#0d1017)}.legal-box h2{font:600 38px "Space Grotesk";margin:12px 0}.legal-box p{max-width:850px;color:var(--muted);line-height:1.8}
+</style>
+<!-- Google AdSense: after approval, replace ca-pub-REPLACE_WITH_YOUR_ID and enable your ad units. The visible ad slots are already placed. -->
+<script>window.FUNAI_ADSENSE_CLIENT="ca-pub-REPLACE_WITH_YOUR_ID";</script>
+</head>
+<body>
+<div class="noise"></div>
+<div class="cursor-glow"></div>
+
+<header class="nav">
+  <a class="logo" href="#home">FUN<span>AI</span></a>
+  <nav>
+    <a href="#tools">AI Tools</a>
+    <a href="#quizzes">Quizzes</a>
+    <a href="#games">Games</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="nav-cta" id="themeOpen">Customize theme</button>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-orb orb1"></div><div class="hero-orb orb2"></div>
+  <div class="hero-content reveal">
+    <div class="pill"><i></i> AI TOOLS · QUIZZES · GAMES</div>
+    <h1>Make your next idea <em>more interesting.</em></h1>
+    <p>Create, explore and play with a premium collection of intelligent tools built for everyday moments.</p>
+    <div class="actions">
+      <a class="btn btn-main" href="#tools">Explore AI Tools <b>→</b></a>
+      <a class="btn btn-line" href="#games">Play a Game <b>↗</b></a>
+    </div>
+    <div class="trust"><span>FAST</span><span>PRIVATE</span><span>MOBILE FIRST</span></div>
+  </div>
+  <div class="hero-card reveal delay">
+    <div class="floating-tag tag1">AI CREATION</div>
+    <div class="floating-tag tag2">DAILY CHALLENGE</div>
+    <div class="hero-photo"></div>
+    <div class="hero-glass">
+      <small>FUNAI STUDIO</small>
+      <strong>Create something worth sharing.</strong>
+      <div class="mini-line"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+  <div class="scroll">SCROLL TO EXPLORE <span>↓</span></div>
+</section>
+<div class="ad-slot" aria-label="Advertisement"><span>ADVERTISEMENT</span></div>
+
+<section class="section" id="tools">
+  <div class="heading reveal"><div><div class="label">01 / AI TOOLBOX</div><h2>Turn a blank page<br><span>into something good.</span></h2></div><p>Smart tools for words, ideas and moments that need a little help.</p></div>
+  <div class="cards tools">
+    <button class="card reveal" data-tool="Bio Generator"><span class="num">01</span><div class="icon">Aa</div><h3>Bio Generator</h3><p>Build a sharp personal bio for social profiles.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Caption Generator"><span class="num">02</span><div class="icon">✦</div><h3>Caption Generator</h3><p>Create captions around your photo or idea.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Love Message"><span class="num">03</span><div class="icon">♡</div><h3>Love Message</h3><p>Write a personal message with the right tone.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Birthday Wishes"><span class="num">04</span><div class="icon">01</div><h3>Birthday Wishes</h3><p>Create a memorable wish in seconds.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Roast Generator"><span class="num">05</span><div class="icon">R</div><h3>Roast Generator</h3><p>Playful, harmless roasts for your friends.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Nickname Generator"><span class="num">06</span><div class="icon">N</div><h3>Nickname Generator</h3><p>Discover names that actually stand out.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Story Generator"><span class="num">07</span><div class="icon">St</div><h3>Story Generator</h3><p>Turn a simple idea into a short story.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Email Generator"><span class="num">08</span><div class="icon">@</div><h3>Email Generator</h3><p>Draft clear emails for work and everyday use.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Resume Helper"><span class="num">09</span><div class="icon">CV</div><h3>Resume Helper</h3><p>Create stronger resume bullets and summaries.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Hashtag Generator"><span class="num">10</span><div class="icon">#</div><h3>Hashtag Generator</h3><p>Find relevant hashtag ideas for your post.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Text Rewriter"><span class="num">11</span><div class="icon">T</div><h3>Text Rewriter</h3><p>Rewrite text in a cleaner, sharper style.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Prompt Builder"><span class="num">12</span><div class="icon">P</div><h3>Prompt Builder</h3><p>Build useful prompts for AI tools.</p><b class="arrow">↗</b></button>
+  </div>
+<div class="ad-slot" aria-label="Advertisement"><span>ADVERTISEMENT</span></div>
+</section>
+
+<section class="photo-break">
+  <div class="photo-overlay"></div>
+  <div class="photo-content reveal"><div class="label">THE FUN SIDE OF AI</div><h2>Built to be used.<br><span>Designed to be remembered.</span></h2><a class="round-btn" href="#quizzes">Explore more <b>→</b></a></div>
+</section>
+
+<section class="section" id="quizzes">
+  <div class="heading reveal"><div><div class="label">02 / CHALLENGE</div><h2>Test your mind.<br><span>Find your type.</span></h2></div><p>Short experiences designed to keep you curious.</p></div>
+  <div class="feature-row">
+    <button class="feature reveal" data-action="personality"><div class="feature-art art-purple"></div><div class="feature-copy"><small>PERSONALITY</small><h3>Quick Personality Quiz</h3><p>Three questions. One fun result.</p><b>Take quiz →</b></div></button>
+    <button class="feature reveal" data-action="iq"><div class="feature-art art-blue"></div><div class="feature-copy"><small>IQ CHALLENGE</small><h3>Pattern Challenge</h3><p>Can you spot what comes next?</p><b>Start challenge →</b></div></button>
+    <button class="feature reveal" data-action="daily"><div class="feature-art art-orange"></div><div class="feature-copy"><small>DAILY</small><h3>Daily Challenge</h3><p>A new prompt every day.</p><b>Open challenge →</b></div></button>
+  </div>
+</section>
+
+<section class="games-section" id="games">
+  <div class="game-bg"></div>
+  <div class="game-content">
+    <div class="label">03 / MINI GAMES</div><h2>One more round?</h2><p>Fast games. No downloads. Just start.</p>
+    <div class="game-grid">
+      <button class="game" data-game="number"><small>01</small><strong>Number Guess</strong><span>Find the hidden number →</span></button>
+      <button class="game" data-game="word"><small>02</small><strong>Word Challenge</strong><span>Unscramble the word →</span></button>
+      <button class="game" data-game="memory"><small>03</small><strong>Memory Challenge</strong><span>Remember the sequence →</span></button>
+      <button class="game" data-game="rps"><small>04</small><strong>Rock Paper Scissors</strong><span>Beat the computer →</span></button>
+      <button class="game" data-game="reaction"><small>05</small><strong>Reaction Test</strong><span>Test your speed →</span></button>
+      <button class="game" data-game="tic"><small>06</small><strong>Tic Tac Toe</strong><span>Play against FunAI →</span></button>
+    </div>
+  </div>
+<div class="ad-slot" aria-label="Advertisement"><span>ADVERTISEMENT</span></div>
+</section>
+
+<section class="contact section" id="contact">
+  <div class="contact-box reveal">
+    <div class="label">CONTACT / SUPPORT</div><h2>Have something to say?</h2><p>Feedback, ideas or business inquiries — reach the FunAI team.</p>
+    <a href="mailto:sultankhan4780615@gmail.com" class="email">sultankhan4780615@gmail.com <span>↗</span></a>
+<div class="contact-mini">
+  <input id="contactName" placeholder="Your name">
+  <input id="contactSubject" placeholder="Subject">
+  <textarea id="contactMessage" rows="4" placeholder="Your message"></textarea>
+  <button class="modal-action" id="sendContact">Send message</button>
+  <div id="contactStatus"></div>
+</div>
+
+  </div>
+</section>
+</main>
+
+<footer><strong>FUNAI</strong><span>CREATE · PLAY · DISCOVER</span><span><a href="#about" style="color:inherit">About</a> · <a href="#privacy" style="color:inherit">Privacy</a> · <a href="#terms" style="color:inherit">Terms</a></span><span>© 2026 FunAI</span></footer>
+<section class="legal section" id="about"><div class="legal-box"><div class="label">ABOUT FUNAI</div><h2>Useful tools. Simple fun.</h2><p>FunAI is a browser-based collection of creative generators, quizzes and mini games designed to be fast, mobile-friendly and easy to use.</p></div></section>
+<section class="legal section" id="privacy"><div class="legal-box"><div class="label">PRIVACY</div><h2>Privacy Policy</h2><p>Basic FunAI generators and games can be used without an account. Theme preferences are stored locally in your browser. Contact messages are opened in your email application. Advertising and analytics services, when enabled, may use their own technologies and policies.</p></div></section>
+<section class="legal section" id="terms"><div class="legal-box"><div class="label">TERMS</div><h2>Terms of Use</h2><p>FunAI provides general creative and entertainment assistance. Review generated content before using it for professional or high-stakes purposes. Features may be updated as the site develops.</p></div></section>
+
+
+<div class="theme-panel" id="themePanel" aria-hidden="true">
+  <div class="theme-head">
+    <div>
+      <div class="label">FUNAI CUSTOMIZER</div>
+      <h3>Make it yours.</h3>
+    </div>
+    <button class="theme-close" id="themeClose">×</button>
+  </div>
+
+  <div class="theme-group">
+    <label>Accent color</label>
+    <div class="swatches">
+      <button class="swatch" data-accent="#9d8cff" style="--sw:#9d8cff"></button>
+      <button class="swatch" data-accent="#62e0ce" style="--sw:#62e0ce"></button>
+      <button class="swatch" data-accent="#ff7ab6" style="--sw:#ff7ab6"></button>
+      <button class="swatch" data-accent="#ffb45e" style="--sw:#ffb45e"></button>
+      <button class="swatch" data-accent="#75a7ff" style="--sw:#75a7ff"></button>
+      <button class="swatch" data-accent="#c7e86b" style="--sw:#c7e86b"></button>
+    </div>
+  </div>
+
+  <div class="theme-group">
+    <label>Background</label>
+    <div class="theme-options">
+      <button data-bg="#07080d">Midnight</button>
+      <button data-bg="#101114">Graphite</button>
+      <button data-bg="#07110f">Deep Green</button>
+      <button data-bg="#110b16">Deep Violet</button>
+    </div>
+  </div>
+
+  <div class="theme-group">
+    <label>Card style</label>
+    <div class="theme-options">
+      <button data-card="#10121a">Dark</button>
+      <button data-card="#171a24">Elevated</button>
+      <button data-card="#0b1518">Glass</button>
+    </div>
+  </div>
+
+  <div class="theme-group">
+    <label>Motion</label>
+    <div class="motion-row">
+      <button id="motionOn" class="active">Animations On</button>
+      <button id="motionOff">Animations Off</button>
+    </div>
+  </div>
+
+  <div class="theme-actions">
+    <button id="themeReset">Reset theme</button>
+    <span>Changes save automatically.</span>
+  </div>
+</div>
+<div class="theme-backdrop" id="themeBackdrop"></div>
+
+<div class="modal" id="modal"><div class="modal-box"><button class="close" id="close">×</button><div id="modalBody"></div></div></div>
+<script>
+const modal=document.querySelector("#modal"),mb=document.querySelector("#modalBody");
+document.querySelector("#close").onclick=()=>modal.classList.remove("open");
+modal.onclick=e=>{if(e.target===modal)modal.classList.remove("open")};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")modal.classList.remove("open")});
+
+const prompts={
+"Bio Generator":"Tell me your name, work/study, interests and preferred vibe.",
+"Caption Generator":"Describe the photo/post and tell me the vibe you want.",
+"Love Message":"Tell me who the message is for and the mood you want.",
+"Birthday Wishes":"Tell me the person's name, relationship and desired tone.",
+"Roast Generator":"Tell me your friend's name or personality and choose light or savage.",
+"Nickname Generator":"Tell me the person's name, personality, hobby or style."
+};
+
+function localAI(tool,input){
+  const x=input.trim();
+  const clean=x.replace(/\s+/g," ");
+  const name=(clean.match(/(?:name is|my name is|for)\s+([A-Za-z][A-Za-z .'-]{1,30})/i)||[])[1] || clean.split(/[,.]/)[0].slice(0,28) || "you";
+  const pick=(arr)=>arr[Math.floor(Math.random()*arr.length)];
+
+  if(tool==="Bio Generator"){
+    return pick([
+      `${name}\nCreating ideas, learning every day and building a life worth remembering.\nTechnology | Growth | New experiences`,
+      `${name}\nCurious mind. Builder at heart.\nLearning, creating and turning ideas into something real.`,
+      `${name}\nDream big. Work quietly. Keep improving.\nTechnology, creativity and the journey forward.`
+    ]) + `\n\nBased on: ${clean}`;
+  }
+
+  if(tool==="Caption Generator"){
+    return `Caption ideas\n\n01  ${clean} — turning a simple moment into a memory.\n02  ${pick(["Less noise, more memories.","A moment worth keeping.","Just living the story, one frame at a time."])}\n03  ${pick(["Good energy. Better memories.","Quiet mood, strong vibe.","No perfect moment needed."])}\n04  ${clean} — and this one stays with me.\n05  ${pick(["Keep moving. Keep creating.","Make today count.","The journey is the best part."])}`;
+  }
+
+  if(tool==="Love Message"){
+    return `A heartfelt message\n\n${pick([
+      `I do not always know how to put my feelings into perfect words, but I know one thing: having you in my life makes ordinary days feel special.`,
+      `Some people become a beautiful part of your story without even trying. You are that person for me, and I am grateful for every moment we share.`,
+      `No matter how busy life gets, I want you to remember that you are important to me. I care about you, I appreciate you, and I want to keep making memories together.`
+    ])}\n\nPersonal note: ${clean}`;
+  }
+
+  if(tool==="Birthday Wishes"){
+    return `Birthday Wishes\n\nHappy Birthday, ${name}!\n\nMay this new chapter bring you success, peace, good health, unforgettable memories and countless reasons to smile. Keep chasing your goals and enjoy every beautiful moment ahead.\n\nSpecial note: ${clean}`;
+  }
+
+  if(tool==="Roast Generator"){
+    return `Playful Roasts\n\n1. ${clean} — confidence on maximum, logic still loading.\n2. You have a talent for making simple things look like a full project.\n3. If overthinking paid money, you would already be rich.\n4. Your plans have plans, and somehow none of them start on time.\n5. Respectfully, even your excuses deserve a software update.`;
+  }
+
+  if(tool==="Nickname Generator"){
+    const base=name.replace(/[^A-Za-z0-9]/g,"").slice(0,16) || "Player";
+    return `Nickname ideas for ${name}\n\n01  ${base}Nova\n02  ${base}Prime\n03  ${base}Rush\n04  ${base}Vibe\n05  ${base}Ace\n06  ${base}Verse\n07  ${base}Spark\n08  ${base}Shadow\n09  ${base}Zero\n10  ${base}X`;
+  }
+
+  if(tool==="Story Generator") return `Story starter\n\n${clean}\n\nThe idea begins with an unexpected moment. A simple choice changes the direction of the day, and the main character has to decide whether to stay comfortable or follow the unknown. What happens next is where the real story begins.`;
+  if(tool==="Email Generator") return `Email draft\n\nSubject: ${clean}\n\nHello,\n\nI am writing regarding ${clean}. I would appreciate your time and would be grateful for your response when convenient.\n\nBest regards`;
+  if(tool==="Resume Helper") return `Resume improvement\n\nProfessional summary:\n${clean}\n\nSuggested bullet: Improved processes, handled responsibilities efficiently, maintained accuracy and contributed to team goals.\n\nTip: Add measurable results where possible.`;
+  if(tool==="Hashtag Generator") return `Hashtag ideas\n\n#${clean.replace(/[^A-Za-z0-9]/g,"")} #ContentCreator #Trending #Explore #Creative #Inspiration #SocialMedia #Ideas #DigitalCreator #FunAI`;
+  if(tool==="Text Rewriter") return `Rewritten version\n\n${clean}\n\nPolished alternative: ${clean.charAt(0).toUpperCase()+clean.slice(1)}. The message is now clearer, smoother and easier to understand.`;
+  if(tool==="Prompt Builder") return `AI prompt\n\nCreate ${clean}. Make the result polished, detailed and visually engaging. Follow the user's requirements closely, avoid unnecessary elements, and produce a clean professional result.`;
+  return `FunAI result\n\n${clean}`;
+}
+document.querySelectorAll("[data-tool]").forEach(b=>b.onclick=()=>openAI(b.dataset.tool));
+function openAI(tool){
+ mb.innerHTML=`<div class="label">FUNAI AI TOOL</div><h2>${tool}</h2><p>${prompts[tool]}</p><input id="aiInput" placeholder="Tell FunAI what you need..."><button class="modal-action" id="go">Generate result</button><p style="margin-top:12px;font-size:10px;color:#747b89">FunAI tool is ready for instant preview generation.</p><div id="result"></div>`;
+ modal.classList.add("open");
+ document.querySelector("#go").onclick=async()=>{
+   const input=document.querySelector("#aiInput").value.trim(), out=document.querySelector("#result");
+   if(!input){out.innerHTML='<div class="result">Please enter some details first.</div>';return}
+   out.innerHTML='<div class="result">Creating your result...</div>';
+   setTimeout(()=>{
+     out.innerHTML='<div class="result">'+safe(localAI(tool,input))+'</div>';
+   },450);
+ }
+}
+function safe(x){return String(x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+
+document.querySelectorAll("[data-action]").forEach(b=>b.onclick=()=>quiz(b.dataset.action));
+function quiz(type){
+  if(type==="personality"){
+    const questions=[
+      {q:"How do you start a new project?",o:["Plan every detail","Start and adapt","Ask people first"]},
+      {q:"What motivates you most?",o:["A clear goal","New possibilities","Helping others"]},
+      {q:"When something goes wrong?",o:["Fix the plan","Experiment","Get advice"]}
+    ];
+    let i=0,score=[0,0,0];
+    const render=()=>{
+      const q=questions[i];
+      mb.innerHTML=`<div class="label">PERSONALITY • ${i+1}/3</div><h2>${q.q}</h2><p>Choose the answer that feels closest to you.</p>`+
+        q.o.map((o,j)=>`<button class="modal-action opt" data-i="${j}" style="display:block;width:100%;margin:10px 0">${o}</button>`).join("")+
+        `<div class="result" id="result">Your answers stay in this session.</div>`;
+      document.querySelectorAll(".opt").forEach(x=>x.onclick=()=>{
+        score[+x.dataset.i]++; i++;
+        if(i<questions.length) render();
+        else{
+          const max=Math.max(...score),idx=score.indexOf(max);
+          const result=[
+            "You are a Planner — focused, organised and goal-driven.",
+            "You are an Explorer — curious, flexible and ready to experiment.",
+            "You are a Connector — thoughtful, collaborative and people-focused."
+          ][idx];
+          mb.innerHTML=`<div class="label">PERSONALITY RESULT</div><h2>Your FunAI type</h2><div class="result">${result}</div><button class="modal-action" id="again">Take quiz again</button>`;
+          document.querySelector("#again").onclick=()=>quiz("personality");
+        }
+      });
+    };
+    render();
+  }
+  if(type==="iq"){
+    const qs=[
+      ["2, 6, 12, 20, 30, ?",["40","42","44"],"42"],
+      ["3, 9, 27, 81, ?",["162","243","324"],"243"],
+      ["1, 4, 9, 16, ?",["20","24","25"],"25"]
+    ];
+    let i=0,correct=0;
+    const render=()=>{
+      const q=qs[i];
+      mb.innerHTML=`<div class="label">IQ CHALLENGE • ${i+1}/3</div><h2>What comes next?</h2><p>${q[0]}</p>`+
+        q[1].map(v=>`<button class="modal-action opt" data-v="${v}" style="margin:6px">${v}</button>`).join("")+
+        `<div class="result" id="result">Score: ${correct}</div>`;
+      document.querySelectorAll(".opt").forEach(x=>x.onclick=()=>{
+        if(x.dataset.v===q[2]) correct++;
+        i++;
+        if(i<qs.length) render();
+        else{
+          mb.innerHTML=`<div class="label">IQ CHALLENGE COMPLETE</div><h2>Final score: ${correct}/3</h2><div class="result">${correct===3?"Perfect run.":correct===2?"Strong result.":"Good try — give it another round."}</div><button class="modal-action" id="again">Play again</button>`;
+          document.querySelector("#again").onclick=()=>quiz("iq");
+        }
+      });
+    };
+    render();
+  }
+  if(type==="daily"){
+    const challenges=[
+      "Write down one idea and improve it in three different ways.",
+      "Take a normal task and find one step you can make faster.",
+      "Create something small today that you can show someone tomorrow."
+    ];
+    const c=challenges[new Date().getDate()%challenges.length];
+    mb.innerHTML=`<div class="label">DAILY CHALLENGE</div><h2>Today's mission</h2><div class="result">${c}</div><button class="modal-action" id="done">Mark complete</button><div id="result"></div>`;
+    document.querySelector("#done").onclick=()=>document.querySelector("#result").innerHTML='<div class="result">Challenge completed. Come back tomorrow for a fresh one.</div>';
+  }
+  modal.classList.add("open")
+}
+document.querySelectorAll("[data-game]").forEach(b=>b.onclick=()=>game(b.dataset.game));
+function game(type){
+  if(type==="number"){
+    const n=Math.floor(Math.random()*50)+1;
+    let tries=0;
+    const render=()=>{mb.innerHTML='<div class="label">GAME 01</div><h2>Number Guess</h2><p>Find the hidden number from 1 to 50.</p><input id="g" type="number" min="1" max="50" placeholder="Your guess"><button class="modal-action" id="check">Check</button><div id="result"></div>';
+      document.querySelector("#check").onclick=()=>{
+        const x=+document.querySelector("#g").value; const r=document.querySelector("#result");
+        if(!x){r.innerHTML='<div class="result">Enter a number first.</div>';return}
+        tries++;
+        if(x===n) r.innerHTML=`<div class="result">Correct. You found it in ${tries} ${tries===1?"try":"tries"}.</div><button class="modal-action" id="again">Play again</button>`;
+        else r.innerHTML=`<div class="result">${x<n?"Too low.":"Too high."} Try again.</div>`;
+        document.querySelector("#again")?.addEventListener("click",()=>game("number"));
+      };
+    }; render();
+  }
+  if(type==="word"){
+    const words=["CREATE","VISION","PUZZLE","PLANET","GAMING","FUTURE","DESIGN"];
+    const w=words[Math.floor(Math.random()*words.length)];
+    const scr=w.split("").sort(()=>Math.random()-.5).join("");
+    mb.innerHTML=`<div class="label">GAME 02</div><h2>Word Challenge</h2><p>Unscramble: <strong>${scr}</strong></p><input id="g" placeholder="Your answer"><button class="modal-action" id="check">Check</button><div id="result"></div>`;
+    document.querySelector("#check").onclick=()=>{
+      const x=document.querySelector("#g").value.trim().toUpperCase();
+      const r=document.querySelector("#result");
+      r.innerHTML=`<div class="result">${x===w?"Correct.":"Not quite. The word was "+w+"."}</div><button class="modal-action" id="again">New word</button>`;
+      document.querySelector("#again").onclick=()=>game("word");
+    };
+  }
+  if(type==="memory"){
+    const s=Array.from({length:5},()=>Math.floor(Math.random()*9)).join(" ");
+    mb.innerHTML=`<div class="label">GAME 03</div><h2>Memory Challenge</h2><p>Memorize this sequence for three seconds.</p><div class="result" id="seq">${s}</div><input id="g" placeholder="Repeat the sequence"><button class="modal-action" id="check">Check</button><div id="result"></div>`;
+    setTimeout(()=>{const el=document.querySelector("#seq");if(el)el.textContent="Sequence hidden";},3000);
+    document.querySelector("#check").onclick=()=>{
+      const x=document.querySelector("#g").value.trim();
+      document.querySelector("#result").innerHTML=`<div class="result">${x===s?"Perfect memory.":"The sequence was "+s+"."}</div><button class="modal-action" id="again">Play again</button>`;
+      document.querySelector("#again").onclick=()=>game("memory");
+    };
+  }
+  if(type==="rps"){
+    const choices=["Rock","Paper","Scissors"];
+    mb.innerHTML=`<div class="label">GAME 04</div><h2>Rock Paper Scissors</h2><p>Choose your move.</p>`+choices.map(v=>`<button class="modal-action rps" data-v="${v}" style="margin:6px">${v}</button>`).join("")+`<div id="result"></div>`;
+    document.querySelectorAll(".rps").forEach(b=>b.onclick=()=>{const u=b.dataset.v,c=choices[Math.floor(Math.random()*3)],win=(u==="Rock"&&c==="Scissors")||(u==="Paper"&&c==="Rock")||(u==="Scissors"&&c==="Paper");document.querySelector("#result").innerHTML=`<div class="result">You: ${u}\nFunAI: ${c}\n\n${u===c?"Draw.":win?"You win.":"FunAI wins."}</div><button class="modal-action" id="again">Play again</button>`;document.querySelector("#again").onclick=()=>game("rps")});
+  }
+  if(type==="reaction"){
+    mb.innerHTML=`<div class="label">GAME 05</div><h2>Reaction Test</h2><p>Press Start, wait for the panel to change, then tap Stop as fast as you can.</p><button class="modal-action" id="react">Start</button><div id="result"></div>`;
+    let start=0,timer=null,armed=false;
+    document.querySelector("#react").onclick=()=>{const b=document.querySelector("#react"),r=document.querySelector("#result");if(!armed){armed=true;b.textContent="Wait...";const delay=1200+Math.random()*2800;timer=setTimeout(()=>{start=performance.now();b.textContent="STOP";},delay)}else{clearTimeout(timer);if(!start){r.innerHTML='<div class="result">Too early. Try again.</div>'}else r.innerHTML=`<div class="result">Reaction time: ${Math.round(performance.now()-start)} ms</div>`;b.textContent="Try again";armed=false;start=0}};
+  }
+  if(type==="tic"){
+    const board=Array(9).fill("");
+    const render=()=>{mb.innerHTML=`<div class="label">GAME 06</div><h2>Tic Tac Toe</h2><p>You are X. FunAI is O.</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:330px">${board.map((v,i)=>`<button class="modal-action cell" data-i="${i}" style="height:70px;font-size:24px">${v||" "}</button>`).join("")}</div><div id="result"></div>`;document.querySelectorAll(".cell").forEach(b=>b.onclick=()=>move(+b.dataset.i))};
+    const lines=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];const win=p=>lines.some(l=>l.every(i=>board[i]===p));
+    const move=i=>{if(board[i]||win("X")||win("O"))return;board[i]="X";if(win("X")||board.every(Boolean))return end();const open=board.map((v,i)=>v?null:i).filter(v=>v!==null);if(open.length){const j=open[Math.floor(Math.random()*open.length)];board[j]="O";}render();if(win("O")||board.every(Boolean))end()};
+    const end=()=>{render();const r=document.querySelector("#result");r.innerHTML=`<div class="result">${win("X")?"You win.":win("O")?"FunAI wins.":"Draw."}</div><button class="modal-action" id="again">Play again</button>`;document.querySelector("#again").onclick=()=>game("tic")};render();
+  }
+  modal.classList.add("open")
+}
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});document.querySelectorAll(".reveal").forEach(x=>obs.observe(x));
+document.addEventListener("pointermove",e=>{const g=document.querySelector(".cursor-glow");g.style.left=(e.clientX-175)+"px";g.style.top=(e.clientY-175)+"px"});
+
+
+
+const sendContact=document.querySelector("#sendContact");
+sendContact?.addEventListener("click",()=>{
+  const n=document.querySelector("#contactName").value.trim();
+  const s=document.querySelector("#contactSubject").value.trim()||"FunAI website inquiry";
+  const m=document.querySelector("#contactMessage").value.trim();
+  const status=document.querySelector("#contactStatus");
+  if(!n||!m){status.innerHTML='<div class="result">Please enter your name and message.</div>';return}
+  const body=`Name: ${n}\n\n${m}`;
+  window.location.href=`mailto:sultankhan4780615@gmail.com?subject=${encodeURIComponent(s)}&body=${encodeURIComponent(body)}`;
+});
+
+/* PERSISTENT THEME CONTROLS */
+(function(){
+  const root=document.documentElement, panel=document.querySelector("#themePanel");
+  const backdrop=document.querySelector("#themeBackdrop");
+  const open=document.querySelector("#themeOpen"), close=document.querySelector("#themeClose");
+  const saved=JSON.parse(localStorage.getItem("funaiTheme")||"{}");
+
+  function apply(t){
+    if(t.accent){root.style.setProperty("--purple",t.accent);root.style.setProperty("--cyan",t.accent);}
+    if(t.bg){root.style.setProperty("--bg",t.bg);}
+    if(t.card){root.style.setProperty("--surface",t.card);}
+    document.body.classList.toggle("no-motion",t.motion==="off");
+    localStorage.setItem("funaiTheme",JSON.stringify(t));
+    document.querySelectorAll(".swatch").forEach(x=>x.classList.toggle("selected",x.dataset.accent===t.accent));
+    document.querySelector("#motionOn")?.classList.toggle("active",t.motion!=="off");
+    document.querySelector("#motionOff")?.classList.toggle("active",t.motion==="off");
+  }
+  function current(){
+    return {
+      accent:root.style.getPropertyValue("--purple").trim()||"#9d8cff",
+      bg:root.style.getPropertyValue("--bg").trim()||"#07080d",
+      card:root.style.getPropertyValue("--surface").trim()||"#10121a",
+      motion:document.body.classList.contains("no-motion")?"off":"on"
+    };
+  }
+  apply({...current(),...saved});
+
+  function toggle(v){panel.classList.toggle("open",v);backdrop.classList.toggle("open",v);panel.setAttribute("aria-hidden",String(!v))}
+  open?.addEventListener("click",()=>toggle(true));
+  close?.addEventListener("click",()=>toggle(false));
+  backdrop?.addEventListener("click",()=>toggle(false));
+
+  document.querySelectorAll(".swatch").forEach(b=>b.addEventListener("click",()=>{
+    const t=current();t.accent=b.dataset.accent;apply(t);
+  }));
+  document.querySelectorAll("[data-bg]").forEach(b=>b.addEventListener("click",()=>{
+    const t=current();t.bg=b.dataset.bg;apply(t);
+  }));
+  document.querySelectorAll("[data-card]").forEach(b=>b.addEventListener("click",()=>{
+    const t=current();t.card=b.dataset.card;apply(t);
+  }));
+  document.querySelector("#motionOn")?.addEventListener("click",()=>{const t=current();t.motion="on";apply(t)});
+  document.querySelector("#motionOff")?.addEventListener("click",()=>{const t=current();t.motion="off";apply(t)});
+  document.querySelector("#themeReset")?.addEventListener("click",()=>{
+    apply({accent:"#9d8cff",bg:"#07080d",card:"#10121a",motion:"on"});
+  });
+})();
+
+</script>
+</body>
+</html>
