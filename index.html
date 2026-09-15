@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FUNAI — Create. Play. Discover.</title>
 <meta name="description" content="FunAI is a premium collection of AI tools, quizzes and games.">
-  <meta name="google-site-verification" content="kN5AVc3PXieOSg6S2OkzCSkGOWZFRDyHwwOd0hutKaU" />
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#07080d">
 <meta property="og:title" content="FUNAI — AI Tools, Quizzes & Games">
@@ -305,6 +304,39 @@
 </style>
 <!-- Google AdSense: after approval, replace ca-pub-REPLACE_WITH_YOUR_ID and enable your ad units. The visible ad slots are already placed. -->
 <script>window.FUNAI_ADSENSE_CLIENT="ca-pub-REPLACE_WITH_YOUR_ID";</script>
+
+<style>
+  /* FunAI API status — keeps the existing design intact */
+  .api-status{font-size:.8rem;opacity:.75;margin-top:8px}
+</style>
+<script>
+  // IMPORTANT: never put an OpenAI secret API key in this public GitHub Pages file.
+  // The frontend calls a secure backend endpoint instead.
+  window.FUNAI_API_ENDPOINT = "https://YOUR-FUNAI-API-DOMAIN/api/chat";
+
+  async function funAICloud(prompt, toolName){
+    const res = await fetch(window.FUNAI_API_ENDPOINT, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({prompt, tool:toolName})
+    });
+    if(!res.ok) throw new Error("AI service unavailable");
+    const data = await res.json();
+    return data.output || data.text || data.response || "";
+  }
+
+  async function tryCloudAI(prompt, toolName, localFallback){
+    try{
+      const result = await funAICloud(prompt, toolName);
+      if(result) return result;
+    }catch(e){
+      console.warn("FunAI cloud AI unavailable; using local fallback.", e);
+    }
+    return localFallback;
+  }
+</script>
+<!-- FunAI: set window.FUNAI_API_ENDPOINT to your deployed secure backend. Never put the OpenAI secret key here. -->
+  <meta name="google-site-verification" content="kN5AVc3PXieOSg6S2OkzCSkGOWZFRDyHwwOd0hutKaU" />
 </head>
 <body>
 <div class="noise"></div>
@@ -357,13 +389,18 @@
     <button class="card reveal" data-tool="Love Message"><span class="num">03</span><div class="icon">♡</div><h3>Love Message</h3><p>Write a personal message with the right tone.</p><b class="arrow">↗</b></button>
     <button class="card reveal" data-tool="Birthday Wishes"><span class="num">04</span><div class="icon">01</div><h3>Birthday Wishes</h3><p>Create a memorable wish in seconds.</p><b class="arrow">↗</b></button>
     <button class="card reveal" data-tool="Roast Generator"><span class="num">05</span><div class="icon">R</div><h3>Roast Generator</h3><p>Playful, harmless roasts for your friends.</p><b class="arrow">↗</b></button>
-    <button class="card reveal" data-tool="Nickname Generator"><span class="num">06</span><div class="icon">N</div><h3>Nickname Generator</h3><p>Discover names that actually stand out.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Nickname Generator"><span class="num">06</span><div class="icon">✨</div><h3>Nickname Generator</h3><p>Discover names that actually stand out.</p><b class="arrow">↗</b></button>
     <button class="card reveal" data-tool="Story Generator"><span class="num">07</span><div class="icon">St</div><h3>Story Generator</h3><p>Turn a simple idea into a short story.</p><b class="arrow">↗</b></button>
     <button class="card reveal" data-tool="Email Generator"><span class="num">08</span><div class="icon">@</div><h3>Email Generator</h3><p>Draft clear emails for work and everyday use.</p><b class="arrow">↗</b></button>
     <button class="card reveal" data-tool="Resume Helper"><span class="num">09</span><div class="icon">CV</div><h3>Resume Helper</h3><p>Create stronger resume bullets and summaries.</p><b class="arrow">↗</b></button>
     <button class="card reveal" data-tool="Hashtag Generator"><span class="num">10</span><div class="icon">#</div><h3>Hashtag Generator</h3><p>Find relevant hashtag ideas for your post.</p><b class="arrow">↗</b></button>
     <button class="card reveal" data-tool="Text Rewriter"><span class="num">11</span><div class="icon">T</div><h3>Text Rewriter</h3><p>Rewrite text in a cleaner, sharper style.</p><b class="arrow">↗</b></button>
-    <button class="card reveal" data-tool="Prompt Builder"><span class="num">12</span><div class="icon">P</div><h3>Prompt Builder</h3><p>Build useful prompts for AI tools.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Prompt Builder"><span class="num">12</span><div class="icon">🧩</div><h3>Prompt Builder</h3><p>Build useful prompts for AI tools.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Text Summarizer"><span class="num">13</span><div class="icon">S</div><h3>Text Summarizer</h3><p>Turn long text into a short, clear summary.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Essay Helper"><span class="num">14</span><div class="icon">📚</div><h3>Essay Helper</h3><p>Build a simple essay structure from your topic.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Translator Helper"><span class="num">15</span><div class="icon">EN</div><h3>Translator Helper</h3><p>Translate common text between English and Urdu.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="AI Chat Helper"><span class="num">16</span><div class="icon">🤖</div><h3>AI Chat Helper</h3><p>Ask a question and get a helpful offline response.</p><b class="arrow">↗</b></button>
+    <button class="card reveal" data-tool="Idea Generator"><span class="num">17</span><div class="icon">💡</div><h3>Idea Generator</h3><p>Generate practical ideas from any topic.</p><b class="arrow">↗</b></button>
   </div>
 <div class="ad-slot" aria-label="Advertisement"><span>ADVERTISEMENT</span></div>
 </section>
@@ -488,7 +525,12 @@ const prompts={
 "Love Message":"Tell me who the message is for and the mood you want.",
 "Birthday Wishes":"Tell me the person's name, relationship and desired tone.",
 "Roast Generator":"Tell me your friend's name or personality and choose light or savage.",
-"Nickname Generator":"Tell me the person's name, personality, hobby or style."
+"Nickname Generator":"Tell me the person's name, personality, hobby or style.",
+"Text Summarizer":"Paste the text you want FunAI to summarize.",
+"Essay Helper":"Give me your essay topic and desired length.",
+"Translator Helper":"Enter text and mention the target language (English or Urdu).",
+"AI Chat Helper":"Ask FunAI a question.",
+"Idea Generator":"Tell me a topic, project or goal and FunAI will suggest ideas."
 };
 
 function localAI(tool,input){
@@ -536,6 +578,38 @@ function localAI(tool,input){
   if(tool==="Hashtag Generator") return `Hashtag ideas\n\n#${clean.replace(/[^A-Za-z0-9]/g,"")} #ContentCreator #Trending #Explore #Creative #Inspiration #SocialMedia #Ideas #DigitalCreator #FunAI`;
   if(tool==="Text Rewriter") return `Rewritten version\n\n${clean}\n\nPolished alternative: ${clean.charAt(0).toUpperCase()+clean.slice(1)}. The message is now clearer, smoother and easier to understand.`;
   if(tool==="Prompt Builder") return `AI prompt\n\nCreate ${clean}. Make the result polished, detailed and visually engaging. Follow the user's requirements closely, avoid unnecessary elements, and produce a clean professional result.`;
+
+  if(tool==="Text Summarizer"){
+    const sentences=clean.match(/[^.!?]+[.!?]+/g)||[clean];
+    const take=Math.max(1,Math.ceil(sentences.length/3));
+    return `Summary\n\n${sentences.slice(0,take).join(" ").trim()}\n\nKey point: ${sentences[0]?.trim()||clean}`;
+  }
+
+  if(tool==="Essay Helper"){
+    return `Essay Outline\n\nTopic: ${clean}\n\nIntroduction\nIntroduce the topic, give brief context and state the main idea.\n\nBody Paragraph 1\nExplain the first major point with an example.\n\nBody Paragraph 2\nExplain the second major point and supporting details.\n\nBody Paragraph 3\nAdd another useful point, comparison or real-world example.\n\nConclusion\nSummarize the main points and finish with a clear final thought.`;
+  }
+
+  if(tool==="Translator Helper"){
+    const wantsUrdu=/\b(urdu|اردو)\b/i.test(clean);
+    if(wantsUrdu) return `Urdu translation helper\n\n${clean.replace(/\b(?:translate|to|into|urdu)\b/gi,"").trim()}\n\nFor an accurate translation, use the original sentence and specify the target language.`;
+    return `English translation helper\n\n${clean}\n\nFor an accurate translation, specify the source and target language.`;
+  }
+
+  if(tool==="AI Chat Helper"){
+    const lower=clean.toLowerCase();
+    let answer;
+    if(/\b(hello|hi|hey)\b/.test(lower)) answer="Hello! I’m FunAI. Ask me about writing, study ideas, technology or everyday questions.";
+    else if(lower.includes("study")||lower.includes("exam")) answer="Study tip: break your topic into small sections, practice active recall, then test yourself without looking at your notes.";
+    else if(lower.includes("resume")||lower.includes("cv")) answer="For a stronger CV, lead with measurable achievements, relevant skills and concise bullet points.";
+    else if(lower.includes("sql")) answer="SQL tip: start with SELECT and WHERE, then practice INSERT, UPDATE, DELETE and JOIN queries using a small practice database.";
+    else answer=`FunAI response\n\nYour question: ${clean}\n\nStart by identifying the goal, break the problem into smaller steps, and choose the simplest practical solution.`;
+    return answer;
+  }
+
+  if(tool==="Idea Generator"){
+    return `Idea Generator\n\nTopic: ${clean}\n\n01  Create a simple beginner-friendly version.\n02  Turn it into a short daily challenge.\n03  Add a checklist or quiz around it.\n04  Create a social-media-friendly version.\n05  Build a small project that solves one real problem.`;
+  }
+
   return `FunAI result\n\n${clean}`;
 }
 document.querySelectorAll("[data-tool]").forEach(b=>b.onclick=()=>openAI(b.dataset.tool));
